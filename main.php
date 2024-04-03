@@ -118,7 +118,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'charts') {
             $_SESSION['waterTempTog'] = $states[0];
         }
 
-        $dbh = new PDO('pgsql:host = localhost; dbname = OND;');
+        $dbh = new PDO('pgsql:host = c7gljno857ucsl.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com; dbname = d8c0voh40hjuh5;');
 
         $_SESSION['action'] = isset($_GET['action']) ? $_GET['action'] : '';
 

@@ -20,7 +20,7 @@ if (isset($_POST['login']) && $_POST['login'] == 'L O G I N') {
     $name = $_POST['user'];
     $pass = $_POST['pass'];
 
-    $connect = pg_connect("host = localhost dbname = login_db");
+    $connect = pg_connect("host = c7gljno857ucsl.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com dbname = d8c0voh40hjuh5");
 
     if ($connect) {
         $query = "SELECT * FROM verify($1::varchar, $2::varchar)";
