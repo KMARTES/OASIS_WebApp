@@ -154,7 +154,7 @@ switch ($span) {
 
 try {
 
-    $dbh = new PDO('pgsql:host=localhost;dbname=OND;');
+    $dbh = new PDO('pgsql:host = c7gljno857ucsl.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com; dbname = d8c0voh40hjuh5; user = u9qeclegl0p99t; password = p3aa566ad83c0cfa1a30735a70361d29d3febfe85f8cd35a24f6253ebeb15cd7f;');
 
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
