@@ -205,7 +205,7 @@ switch ($_SESSION['span']) {
                 $_SESSION['term'] = "SELECT date, time, water_temp FROM {$_SESSION['nursery']} WHERE date BETWEEN CURRENT_DATE - INTERVAL '7 days' AND CURRENT_DATE GROUP BY date, time, water_temp ORDER BY date, time";
             }
             if ($_SESSION['dataset'] == 'all') {
-                $_SESSION['term'] = "SELECT * FROM {$_SESSION['nursery']} WHERE date BETWEEN CURRENT_DATE - INTERVAL '7 days' AND CURRENT_DATE GROUP BY date, time ORDER BY date, time";
+                $_SESSION['term'] = "SELECT date, time, tds, ph, ambient_temp, water_temp FROM {$_SESSION['nursery']} WHERE date BETWEEN CURRENT_DATE - INTERVAL '7 days' AND CURRENT_DATE GROUP BY date, time, tds, ph, ambient_temp, water_temp ORDER BY date, time";
             }
         } else {
             if ($_SESSION['dataset'] == 'tds') {
@@ -229,9 +229,9 @@ switch ($_SESSION['span']) {
                 $_SESSION['term3'] = "SELECT date, time, water_temp FROM mock_data WHERE date BETWEEN CURRENT_DATE - INTERVAL '7 days' AND CURRENT_DATE GROUP BY date, time, water_temp ORDER BY date, time";
             }
             if ($_SESSION['dataset'] == 'all') {
-                $_SESSION['term1'] = "SELECT date, time, date_trunc('day',date)::date AS day FROM nursery1 WHERE date BETWEEN CURRENT_DATE - INTERVAL '7 days' AND CURRENT_DATE GROUP BY date, time, day ORDER BY date, time";
+                $_SESSION['term1'] = "SELECT date, time, tds, ph, ambient_temp, water_temp FROM nursery1 WHERE date BETWEEN CURRENT_DATE - INTERVAL '7 days' AND CURRENT_DATE GROUP BY date, time, tds, ph, ambient_temp, water_temp ORDER BY date, time";
                 $_SESSION['term2'] = "SELECT date, time, tds, ph, ambient_temp, water_temp FROM nursery2 WHERE date BETWEEN CURRENT_DATE - INTERVAL '7 days' AND CURRENT_DATE GROUP BY date, time, tds, ph, ambient_temp, water_temp ORDER BY date, time";
-                //$_SESSION['term3'] = "SELECT * FROM mock_data WHERE date BETWEEN CURRENT_DATE - INTERVAL '7 days' AND CURRENT_DATE GROUP BY date, time ORDER BY date, time";
+                $_SESSION['term3'] = "SELECT date, time, tds, ph, ambient_temp, water_temp FROM mock_data WHERE date BETWEEN CURRENT_DATE - INTERVAL '7 days' AND CURRENT_DATE GROUP BY date, time, tds, ph, ambient_temp, water_temp ORDER BY date, time";
             }
         }
         break;
@@ -295,7 +295,7 @@ switch ($_SESSION['span']) {
                 $_SESSION['term'] = "SELECT date, time, date_trunc('year', date)::date AS year, AVG(water_temp) AS water_temp FROM {$_SESSION['nursery']} WHERE date >= CURRENT_DATE - INTERVAL '3 years' GROUP BY date, time, year ORDER BY year";
             }
             if ($_SESSION['dataset'] == 'all') {
-                $_SESSION['term'] = "SELECT date_trunc('year', date)::date AS year, AVG(tds) AS tds, AVG(ph) as pH, AVG(ambient_temp) as ambient_temp, AVG(water_temp) as water_temp FROM {$_SESSION['nursery']} WHERE date >= CURRENT_DATE - INTERVAL '5 years' GROUP BY date, time, year ORDER BY year";
+                $_SESSION['term'] = "SELECT date, time, date_trunc('year', date)::date AS year, AVG(tds) AS tds, AVG(ph) as pH, AVG(ambient_temp) as ambient_temp, AVG(water_temp) as water_temp FROM {$_SESSION['nursery']} WHERE date >= CURRENT_DATE - INTERVAL '5 years' GROUP BY date, time, year ORDER BY year";
             }
         } else {
             if ($_SESSION['dataset'] == 'tds') {
@@ -332,7 +332,7 @@ switch ($_SESSION['span']) {
 
 try {
 
-    $dbh = new PDO('pgsql:host=localhost;dbname=OND;');
+    $dbh = new PDO('pgsql:host = c7gljno857ucsl.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com; dbname = d8c0voh40hjuh5; user = u9qeclegl0p99t; password = p3aa566ad83c0cfa1a30735a70361d29d3febfe85f8cd35a24f6253ebeb15cd7f;');
 
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
