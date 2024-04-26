@@ -1,11 +1,22 @@
 <?php
 session_start();
 
+if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+    // If not logged in, redirect to login page
+    header('location: login_page.php');
+    exit;
+}
+if (isset($_GET['logout']) && $_GET['logout'] === 'true') {
+    header('location:login_page.php');
+    session_abort();
+    exit;
+}
 if (isset($_GET['action']) && $_GET['action'] === 'charts') {
     header('location:chart.php');
     exit; // Make sure to exit after redirection
 }
 ?>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -20,7 +31,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'charts') {
 
 <body>
 <div class = "logout_btn">
-    <button id = "logout" type = "button"> L O G O U T </button>
+    <button id = "logout" type = "button" onclick = "location.href = 'main.php?logout=true'"> L O G O U T </button>
 </div>
 
 <header>
